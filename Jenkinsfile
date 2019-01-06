@@ -11,7 +11,8 @@ pipeline {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
 				echo "Compiler is on ${env.CC}"           
 				script {
-				    currentBuild.result = 'SUCCESS'
+				    echo "build end"
+				    currentBuild.result = 'failure'
 				    return
                 }
 			}
