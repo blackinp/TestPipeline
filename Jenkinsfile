@@ -1,4 +1,4 @@
 node {
    echo 'Hello World'
-   echo 'Hello World'
+   echo 'Goodbye World'
 }
