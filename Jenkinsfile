@@ -31,14 +31,15 @@ pipeline {
                 sh 'make check || true' 
             }
 			post {
-			always {
-				echo 'post always'
-			}
-			success {
-				echo 'post success'
-			}
-			failure {
-				echo 'post failure'
+				always {
+					echo 'post always'
+				}
+				success {
+					echo 'post success'
+				}
+				failure {
+					echo 'post failure'
+				}
 			}
         }
 
