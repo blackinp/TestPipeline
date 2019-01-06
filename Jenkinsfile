@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
 		    agent {
-				label 2build_server'
+				label 'build_server'
 			}
             steps {
                 echo 'Building..'
