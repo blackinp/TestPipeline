@@ -12,7 +12,7 @@ pipeline {
 				echo "Compiler is on ${env.CC}"           
 				script {
 				    echo "build end"
-				    currentBuild.result = 'failure'
+				    currentBuild.result = 'FAILURE'
 				    return
                 }
 			}
