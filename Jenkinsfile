@@ -9,7 +9,12 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-				echo "Compiler is on ${env.CC}"            }
+				echo "Compiler is on ${env.CC}"           
+				script {
+				    currentBuild.result = 'SUCCESS'
+				    return
+                }
+			}
 			post {
 			always {
 				echo 'post always'
