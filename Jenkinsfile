@@ -1,15 +1,18 @@
 // Declarative //
 pipeline {
-    agent any
+    agent none
 	environment {
         CC = 'diab'
     }
     stages {
         stage('Build') {
+		    agent {
+				label 2build_server'
+			}
             steps {
                 echo 'Building..'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-				echo "Compiler is on ${env.CC}"
+				echo "Compiler is ${env.CC}"
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
@@ -20,18 +23,6 @@ pipeline {
                  *  using `true` to allow the Pipeline to continue nonetheless
                  */
                 sh 'make check || true' 
-            }
-        }
-        stage('Deploy') {
-            when {
-                expression {
-                    /* 如果测试失败，状态为UNSTABLE */
-                    currentBuild.result == null || currentBuild.result == 'SUCCESS' 
-                }
-            }
-            steps {
-                echo 'Deploying..'
-                sh 'make publish'
             }
         }
     }
