@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'make'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
