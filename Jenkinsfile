@@ -13,7 +13,7 @@ pipeline {
 				script {
 				    echo "build end"
 				    currentBuild.result = 'FAILURE'
-				    return
+				    return 1
                 }
 			}
 			post {
