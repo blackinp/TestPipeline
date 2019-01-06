@@ -22,17 +22,16 @@ pipeline {
                 sh 'make check || true' 
             }
         }
-        stage('Deploy') {
-            when {
-                expression {
-                    /* 如果测试失败，状态为UNSTABLE */
-                    currentBuild.result == null || currentBuild.result == 'SUCCESS' 
-                }
-            }
-            steps {
-                echo 'Deploying..'
-                sh 'make publish'
-            }
-        }
+		post {
+			always {
+				echo 'post always'
+			}
+			success {
+				echo 'post success'
+			}
+			failure {
+				echo 'post failure'
+			}
+		}
     }
 }
