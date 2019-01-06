@@ -1,12 +1,15 @@
 // Declarative //
 pipeline {
     agent any
-
+	environment {
+        CC = 'diab'
+    }
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+				echo "Compiler is on ${env.CC}"
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
